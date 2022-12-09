@@ -1,0 +1,33 @@
+<div class="m-2">
+    <button (click)="openDialog()" class="btn btn-primary">Add new</button>
+</div>
+<form>
+  <div class="form-group">
+    <input type="text" class="form-control" [value]="searchTerm" (change)="search($event)" placeholder="Search.....">
+  </div>
+</form>
+<table class="table table-striped mt-5" *ngIf="tasks$ | async as tasks">
+    <thead *ngIf="tasks.length">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Created Date</th>
+          <th scope="col">Priority</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{task.id}}</td>
+        <td>{{task.name}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.createdDate | date: 'dd.MM.yyyy'}}</td>
+        <td>{{task.priority}}</td>
+        <td>{{ Status[task.status]}}</td>
+        <td class="control"><button (click)="openDialog(task)" class="btn btn-primary w-100">Edit</button></td>
+        <td class="control"><button (click)="deleteTask(task.id!)" class="btn btn-danger w-100">Delete</button></td>
+      </tr>
+    </tbody>
+    <h1 *ngIf="!tasks.length">Not Found!!!</h1>
+  </table>

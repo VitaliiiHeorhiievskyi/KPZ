@@ -1,0 +1,41 @@
+<form class="m-4" [formGroup]="data.form" #f="ngForm" novalidate autocomplete="off">
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>Priority</mat-label>
+                <input matInput formControlName="priority">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <select matNativeControl formControlName="status" required>
+                  <option *ngFor="let enum of getEnums()">{{enum}}</option>
+                </select>
+              </mat-form-field>
+        </div>
+            <mat-label>CreatedDate</mat-label>
+            <input matInput type="date" value="2022-12-08" formControlName="createdDate">
+    </div>
+    <div mat-dialog-actions class="d-flex justify-content-end">
+        <div class="me-2">
+            <button mat-button (click)="submit()" class="bg-primary text-white">Submit</button>
+        </div>
+        <div class="ms-2">
+            <button mat-button class="bg-secondary text-white" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</form>
+
