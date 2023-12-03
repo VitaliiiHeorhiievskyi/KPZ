@@ -28,6 +28,11 @@ namespace WebApi.Services
             return await _context.Notifications.ToListAsync();
         }
 
+        public async Task<IEnumerable<Doctor>> GetAllDoctorsAsync()
+        {
+            return await _context.Doctors.ToListAsync();
+        }
+
         public async Task<Notification?> GetByIdAsync(Guid id)
         {
             return await _context.Notifications.FindAsync(id);

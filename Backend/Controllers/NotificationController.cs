@@ -41,6 +41,17 @@ namespace WebApi.Controllers
             return Ok(notification);
         }
 
+        [HttpGet("doctors")]
+        public async Task<IActionResult> GetAllDoctors()
+        {
+            var doctors = await _service.GetAllDoctorsAsync();
+            if (doctors == null)
+            {
+                return NotFound();
+            }
+            return Ok(doctors);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, Notification notification)
         {
