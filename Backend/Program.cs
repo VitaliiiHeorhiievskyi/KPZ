@@ -1,8 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Lab3.Contracts;
-using Lab3.DataBase;
-using Lab3.Services;
+using PatientHealth.DataBase;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,9 +12,7 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddTransient<IProjectTaskService, ProjectTaskService>();
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
 
 // add policy
 builder.Services.AddCors(options =>
