@@ -2,6 +2,8 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using PatientHealth.DataBase;
 using Microsoft.EntityFrameworkCore;
+using WebApi.Interfaces;
+using WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,8 @@ builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
+
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 // add policy
 builder.Services.AddCors(options =>
