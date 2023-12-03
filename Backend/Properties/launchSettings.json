@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Lab3": {
+    "PatientHelath": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
