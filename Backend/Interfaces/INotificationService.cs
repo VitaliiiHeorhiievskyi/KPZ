@@ -11,5 +11,6 @@ namespace WebApi.Interfaces
         Task UpdateAsync(Guid id, Notification notification);
         Task DeleteAsync(Guid id);
         Task ChangeStatusAsync(Guid id, NotificationStatusEnum notificationStatus);
+        Task<IEnumerable<Doctor>> GetAllDoctorsAsync();
     }
 }

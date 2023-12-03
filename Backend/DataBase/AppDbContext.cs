@@ -8,6 +8,7 @@ namespace PatientHealth.DataBase
     {
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
@@ -77,6 +78,39 @@ namespace PatientHealth.DataBase
                     Doctor = null,
                     Duration = 0,
                     Regularity = "Weekly"
+                }
+            );
+
+            modelBuilder.Entity<Doctor>().HasData(
+                new Doctor
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Dr. Smith",
+                    Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua"
+                },
+                new Doctor
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Dr. White",
+                    Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua"
+                },
+                new Doctor
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Dr. Green",
+                    Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua"
+                },
+                new Doctor
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Dr. Jones",
+                    Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua"
+                },
+                new Doctor
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Dr. Laura Garcia",
+                    Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua"
                 }
             );
         }
