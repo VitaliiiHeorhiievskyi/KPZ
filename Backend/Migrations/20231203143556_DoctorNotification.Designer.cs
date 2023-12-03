@@ -12,8 +12,8 @@ using PatientHealth.DataBase;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231203140816_Doctors")]
-    partial class Doctors
+    [Migration("20231203143556_DoctorNotification")]
+    partial class DoctorNotification
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,31 +43,31 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6dceef30-76fb-43e3-9e19-652f51708291"),
+                            Id = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. Smith"
                         },
                         new
                         {
-                            Id = new Guid("974de7f2-bd3c-4a2f-9a0f-a8133b79641c"),
+                            Id = new Guid("f83fd5cd-f6eb-42c0-928b-ce9ad121e0d4"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. White"
                         },
                         new
                         {
-                            Id = new Guid("d402bac3-cb64-4168-9570-2e92d257623e"),
+                            Id = new Guid("3e00a3d2-9137-4d51-9d0d-ee8a4bbccbc6"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. Green"
                         },
                         new
                         {
-                            Id = new Guid("7b7711ac-8ebc-4633-befd-10d8841b4009"),
+                            Id = new Guid("33860d65-b6bd-4392-b2cf-b477369fed6a"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. Jones"
                         },
                         new
                         {
-                            Id = new Guid("bd6c0d10-2fbf-4e4d-bf6f-0231a62027d8"),
+                            Id = new Guid("e01f7dc5-9252-4db8-9483-744b0357fd84"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. Laura Garcia"
                         });
@@ -85,14 +85,17 @@ namespace WebApi.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Doctor")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
                     b.Property<string>("Label")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PatientId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Regularity")
                         .HasColumnType("nvarchar(max)");
@@ -105,64 +108,73 @@ namespace WebApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
                     b.ToTable("Notifications");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4bc17de2-e8e2-4aff-97c1-e823dd8fd142"),
-                            Date = new DateTime(2023, 12, 4, 16, 8, 16, 406, DateTimeKind.Local).AddTicks(6893),
+                            Id = new Guid("957570eb-485c-46bd-b56e-1638d7d9edf9"),
+                            Date = new DateTime(2023, 12, 4, 16, 35, 56, 616, DateTimeKind.Local).AddTicks(6333),
                             Description = "Don't forget your appointment tomorrow at 10 AM.",
-                            Doctor = "Dr. Smith",
+                            DoctorId = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Duration = 30,
                             Label = "Appointment Reminder",
+                            PatientId = new Guid("b8879171-fab7-4342-8171-82b7900e6f4c"),
                             Regularity = "Once",
                             Status = 2,
                             Type = 1
                         },
                         new
                         {
-                            Id = new Guid("5cd61a03-f955-4fea-a58b-eaca70f9cec3"),
-                            Date = new DateTime(2023, 12, 3, 22, 8, 16, 406, DateTimeKind.Local).AddTicks(6926),
+                            Id = new Guid("a478278e-f282-4104-ade8-23c4f28bb971"),
+                            Date = new DateTime(2023, 12, 3, 22, 35, 56, 616, DateTimeKind.Local).AddTicks(6370),
                             Description = "Time to take your medication.",
-                            Doctor = "Dr. Jones",
+                            DoctorId = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Duration = 0,
                             Label = "Medication Reminder",
+                            PatientId = new Guid("b8879171-fab7-4342-8171-82b7900e6f4c"),
                             Regularity = "Daily",
                             Status = 1,
                             Type = 0
                         },
                         new
                         {
-                            Id = new Guid("6c76b372-483d-4d01-a774-695f742fecbc"),
-                            Date = new DateTime(2023, 12, 5, 16, 8, 16, 406, DateTimeKind.Local).AddTicks(6929),
+                            Id = new Guid("d9c8509b-d4fb-43e9-8d6d-5d3b90b61782"),
+                            Date = new DateTime(2023, 12, 5, 16, 35, 56, 616, DateTimeKind.Local).AddTicks(6375),
                             Description = "Your recent lab results are ready for review.",
-                            Doctor = "Dr. Green",
+                            DoctorId = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Duration = 0,
                             Label = "Lab Results",
+                            PatientId = new Guid("b8879171-fab7-4342-8171-82b7900e6f4c"),
                             Regularity = "Once",
                             Status = 2,
                             Type = 1
                         },
                         new
                         {
-                            Id = new Guid("709ac1f6-4e92-467d-be82-819478a57723"),
-                            Date = new DateTime(2023, 12, 10, 16, 8, 16, 406, DateTimeKind.Local).AddTicks(6932),
+                            Id = new Guid("9d1b1cf1-4386-4b4c-b380-db08bc7d5d1f"),
+                            Date = new DateTime(2023, 12, 10, 16, 35, 56, 616, DateTimeKind.Local).AddTicks(6379),
                             Description = "Remember to schedule your follow-up appointment.",
-                            Doctor = "Dr. White",
+                            DoctorId = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Duration = 0,
                             Label = "Follow-up Reminder",
+                            PatientId = new Guid("7a47b2ab-1983-4c1f-b498-bf6b57fbb18d"),
                             Regularity = "Once",
                             Status = 0,
                             Type = 0
                         },
                         new
                         {
-                            Id = new Guid("d2c46ede-5ee2-4e26-9fd4-5de3d152701f"),
-                            Date = new DateTime(2023, 12, 6, 16, 8, 16, 406, DateTimeKind.Local).AddTicks(6936),
+                            Id = new Guid("8b50155d-ff86-48fc-8f99-a710a46cf570"),
+                            Date = new DateTime(2023, 12, 6, 16, 35, 56, 616, DateTimeKind.Local).AddTicks(6384),
                             Description = "Check out the latest health tips on our website.",
                             Duration = 0,
                             Label = "Health Tips",
+                            PatientId = new Guid("7a47b2ab-1983-4c1f-b498-bf6b57fbb18d"),
                             Regularity = "Weekly",
                             Status = 1,
                             Type = 1
@@ -208,6 +220,54 @@ namespace WebApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Patients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b8879171-fab7-4342-8171-82b7900e6f4c"),
+                            Address = "123 Main St, Anytown, USA",
+                            BirthDate = new DateTime(1980, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "john.doe@example.com",
+                            FirstName = "John",
+                            LastName = "Doe",
+                            Password = "password1",
+                            PhoneNumber = "123-456-7890",
+                            Sex = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("7a47b2ab-1983-4c1f-b498-bf6b57fbb18d"),
+                            Address = "456 Elm St, Othertown, USA",
+                            BirthDate = new DateTime(1990, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "jane.smith@example.com",
+                            FirstName = "Jane",
+                            LastName = "Smith",
+                            Password = "password2",
+                            PhoneNumber = "234-567-8901",
+                            Sex = 1
+                        });
+                });
+
+            modelBuilder.Entity("WebApi.Models.Notification", b =>
+                {
+                    b.HasOne("WebApi.Models.Doctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId");
+
+                    b.HasOne("WebApi.Models.Patient", "Patient")
+                        .WithMany("Notifications")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("WebApi.Models.Patient", b =>
+                {
+                    b.Navigation("Notifications");
                 });
 #pragma warning restore 612, 618
         }

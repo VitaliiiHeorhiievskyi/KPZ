@@ -38,6 +38,11 @@ namespace WebApi.Services
             return await _context.Notifications.FindAsync(id);
         }
 
+        public async Task<List<Notification>?> GetByPatientIdAsync(Guid patientId)
+        {
+            return await _context.Notifications.Where(n => n.PatientId == patientId).ToListAsync();
+        }
+
         public async Task UpdateAsync(Guid id, Notification notification)
         {
             var existingNotification = await _context.Notifications.FindAsync(id);
