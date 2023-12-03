@@ -34,6 +34,8 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Services\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
