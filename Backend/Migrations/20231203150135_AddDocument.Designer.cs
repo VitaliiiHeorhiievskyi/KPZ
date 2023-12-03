@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PatientHealth.DataBase;
 
@@ -11,9 +12,10 @@ using PatientHealth.DataBase;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231203150135_AddDocument")]
+    partial class AddDocument
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,25 +49,25 @@ namespace WebApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b41880a2-6e22-4b52-bc02-781e9a4fe534"),
+                            Id = new Guid("5c9c61dd-5f36-446f-a4b5-a4395ef2787b"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. White"
                         },
                         new
                         {
-                            Id = new Guid("b8904758-a99f-44f1-bc1f-cac0b8c482d8"),
+                            Id = new Guid("e921f5a3-08cf-46bb-9315-bdfa5938a53a"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. Green"
                         },
                         new
                         {
-                            Id = new Guid("b4921fbe-27c9-4089-a831-5e429f72e973"),
+                            Id = new Guid("b6d6e9ce-32a6-49fa-9a78-a0c96dfbe5a1"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. Jones"
                         },
                         new
                         {
-                            Id = new Guid("77dfc1c2-8d0e-417c-8f9c-1c595ea155a4"),
+                            Id = new Guid("b40930dd-49db-4e62-aeb9-0be4809becb4"),
                             Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua",
                             Name = "Dr. Laura Garcia"
                         });
@@ -107,7 +109,7 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0542d634-8231-4f56-a12e-aa34c713d718"),
+                            Id = new Guid("a1e064dc-c716-4380-9d47-ed632a2c0a64"),
                             Description = "Medical card with all needed info",
                             IsVerified = true,
                             Name = "Medical card",
@@ -161,8 +163,8 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("099801e9-ca85-4232-bcd6-cfc3135c46bb"),
-                            Date = new DateTime(2023, 12, 4, 17, 23, 11, 732, DateTimeKind.Local).AddTicks(7580),
+                            Id = new Guid("260df0ed-2662-497b-8730-5f60856bc7f9"),
+                            Date = new DateTime(2023, 12, 4, 17, 1, 35, 61, DateTimeKind.Local).AddTicks(1772),
                             Description = "Don't forget your appointment tomorrow at 10 AM.",
                             DoctorId = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Duration = 30,
@@ -174,8 +176,8 @@ namespace WebApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("05328dff-4c5c-4d84-83d7-3c74ca8a5067"),
-                            Date = new DateTime(2023, 12, 3, 23, 23, 11, 732, DateTimeKind.Local).AddTicks(7643),
+                            Id = new Guid("5ddf3f92-d650-420e-af0f-133090dec775"),
+                            Date = new DateTime(2023, 12, 3, 23, 1, 35, 61, DateTimeKind.Local).AddTicks(1818),
                             Description = "Time to take your medication.",
                             DoctorId = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Duration = 0,
@@ -187,8 +189,8 @@ namespace WebApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("65eb8da2-f262-4753-baaf-9f0181484365"),
-                            Date = new DateTime(2023, 12, 5, 17, 23, 11, 732, DateTimeKind.Local).AddTicks(7655),
+                            Id = new Guid("41b1f610-3fc2-42d7-85a5-fc3894baea8c"),
+                            Date = new DateTime(2023, 12, 5, 17, 1, 35, 61, DateTimeKind.Local).AddTicks(1825),
                             Description = "Your recent lab results are ready for review.",
                             DoctorId = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Duration = 0,
@@ -200,8 +202,8 @@ namespace WebApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d7789c60-c51f-4b9c-9a7a-f3c1ecbafcf3"),
-                            Date = new DateTime(2023, 12, 10, 17, 23, 11, 732, DateTimeKind.Local).AddTicks(7666),
+                            Id = new Guid("32b4acd7-b0d1-4156-a77d-3b871c70074e"),
+                            Date = new DateTime(2023, 12, 10, 17, 1, 35, 61, DateTimeKind.Local).AddTicks(1833),
                             Description = "Remember to schedule your follow-up appointment.",
                             DoctorId = new Guid("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                             Duration = 0,
@@ -213,8 +215,8 @@ namespace WebApi.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4505b0ca-8d55-420c-9052-b483335ed482"),
-                            Date = new DateTime(2023, 12, 6, 17, 23, 11, 732, DateTimeKind.Local).AddTicks(7676),
+                            Id = new Guid("b6026409-6370-4131-a6c9-d75e2fac48fa"),
+                            Date = new DateTime(2023, 12, 6, 17, 1, 35, 61, DateTimeKind.Local).AddTicks(1839),
                             Description = "Check out the latest health tips on our website.",
                             Duration = 0,
                             Label = "Health Tips",
@@ -289,6 +291,18 @@ namespace WebApi.Migrations
                             Password = "password2",
                             PhoneNumber = "234-567-8901",
                             Sex = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("784fe36b-4aaf-4430-bbea-2089f81b753b"),
+                            Address = "123 Main St",
+                            BirthDate = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "john.doe@example.com",
+                            FirstName = "John",
+                            LastName = "Doe",
+                            Password = "hashed_password",
+                            PhoneNumber = "123-456-7890",
+                            Sex = 0
                         });
                 });
 

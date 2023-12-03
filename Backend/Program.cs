@@ -21,6 +21,7 @@ builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IDocumentService, DocumentService>();
 
 // add policy
 builder.Services.AddCors(options =>
