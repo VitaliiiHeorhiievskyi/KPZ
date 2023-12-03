@@ -10,8 +10,11 @@ namespace WebApi.Models
         public string? Description { get; set; }
         public DateTime Date { get; set; }
         public NotificationStatusEnum Status { get; set; }
-        public string? Doctor { get; set; }
+        public Guid? DoctorId { get; set; }
         public int Duration { get; set; }
         public string? Regularity { get; set; }
+        public Guid PatientId { get; set; }
+        public Patient? Patient { get; set; }
+        public Doctor? Doctor { get; set; }
     }
 }
