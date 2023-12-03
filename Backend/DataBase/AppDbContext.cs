@@ -9,7 +9,7 @@ namespace PatientHealth.DataBase
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
-
+        public DbSet<Document> Documents { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
@@ -146,6 +146,24 @@ namespace PatientHealth.DataBase
                     Email = "vitalii.heorhiievskyi.pz.2020@lpnu.ua"
                 }
             );
+
+            modelBuilder.Entity<Document>().HasData(
+                new Document
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Medical card",
+                    Description = "Medical card with all needed info",
+                    UploadDate = new DateTime(2022, 2, 2),
+                    Url = "No Url",
+                    IsVerified = true,
+                    PatientId = Guid.Parse("784fe36b-4aaf-4430-bbea-2089f81b753b"),
+                }
+            );
+
+            modelBuilder.Entity<Document>()
+                .HasOne(d => d.Patient)
+                .WithMany(p => p.Documents)
+                .HasForeignKey(d => d.PatientId);
         }
     }
 }

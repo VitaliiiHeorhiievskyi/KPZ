@@ -12,7 +12,7 @@ public class Patient
     public string PhoneNumber { get; set; }
     public Sex Sex { get; set; }
     public virtual List<Notification>? Notifications { get; set; }
+    public virtual List<Document>? Documents { get; set; }
 }
 
-public enum Sex
-{ Male = 0, Female = 1 }
+public enum Sex { Male = 0, Female = 1 }
