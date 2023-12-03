@@ -37,7 +37,7 @@ namespace PatientHealth.DataBase
                     Label = "Medication Reminder",
                     Description = "Time to take your medication.",
                     Date = DateTime.Now.AddHours(6),
-                    Status = NotificationStatusEnum.Deleted,
+                    Status = NotificationStatusEnum.Rejected,
                     Doctor = "Dr. Jones",
                     Duration = 0,
                     Regularity = "Daily"
@@ -73,7 +73,7 @@ namespace PatientHealth.DataBase
                     Label = "Health Tips",
                     Description = "Check out the latest health tips on our website.",
                     Date = DateTime.Now.AddDays(3),
-                    Status = NotificationStatusEnum.Expired,
+                    Status = NotificationStatusEnum.Rejected,
                     Doctor = null,
                     Duration = 0,
                     Regularity = "Weekly"
