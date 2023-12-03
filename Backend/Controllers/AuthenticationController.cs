@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.Interfaces;
-using WebApi.Models.Enums;
-using WebApi.Models;
 using WebApi.ViewModels;
 
 namespace WebApi.Controllers;

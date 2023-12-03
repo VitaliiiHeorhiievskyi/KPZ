@@ -14,4 +14,5 @@ public class Patient
     public virtual List<Notification>? Notifications { get; set; }
 }
 
-public enum Sex { Male = 0, Female = 1 }
+public enum Sex
+{ Male = 0, Female = 1 }

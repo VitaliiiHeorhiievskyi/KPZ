@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -65,7 +64,7 @@ namespace WebApi.Migrations
                 columns: new[] { "Id", "Address", "BirthDate", "Email", "FirstName", "LastName", "Password", "PhoneNumber", "Sex" },
                 values: new object[,]
                 {
-                    { new Guid("7a47b2ab-1983-4c1f-b498-bf6b57fbb18d"), "456 Elm St, Othertown, USA", new DateTime(1990, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "jane.smith@example.com", "Jane", "Smith", "password2", "234-567-8901", 1 },
+                    { new Guid("7a47b2ab-1983-4c1f-b498-bf6b57fbb18d"), "456 Elm St, Othertown, USA", new DateTime(1990, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "georgiievsky@gmail.com", "Jane", "Smith", "password2", "234-567-8901", 1 },
                     { new Guid("b8879171-fab7-4342-8171-82b7900e6f4c"), "123 Main St, Anytown, USA", new DateTime(1980, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "john.doe@example.com", "John", "Doe", "password1", "123-456-7890", 0 }
                 });
 

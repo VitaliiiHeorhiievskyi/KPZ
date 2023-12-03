@@ -1,9 +1,10 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using PatientHealth.DataBase;
 using Microsoft.EntityFrameworkCore;
+using PatientHealth.DataBase;
 using WebApi.Interfaces;
 using WebApi.Services;
+using WebApi.Services.EmailService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 // add policy
 builder.Services.AddCors(options =>

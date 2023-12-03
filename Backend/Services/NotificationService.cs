@@ -6,7 +6,7 @@ using WebApi.Models.Enums;
 
 namespace WebApi.Services
 {
-    public class NotificationService: INotificationService
+    public class NotificationService : INotificationService
     {
         private readonly AppDbContext _context;
 

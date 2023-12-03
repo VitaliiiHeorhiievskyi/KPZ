@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PatientHealth.DataBase;
+﻿using PatientHealth.DataBase;
 using WebApi.Interfaces;
-using WebApi.Migrations;
 using WebApi.Models;
 
 namespace WebApi.Services;

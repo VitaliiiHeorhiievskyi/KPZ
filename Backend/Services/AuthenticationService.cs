@@ -1,8 +1,7 @@
-﻿using PatientHealth.DataBase;
-using WebApi.Models.Enums;
-using WebApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PatientHealth.DataBase;
 using WebApi.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using WebApi.Models;
 using WebApi.ViewModels;
 
 namespace WebApi.Services;

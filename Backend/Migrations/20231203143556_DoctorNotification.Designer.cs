@@ -239,7 +239,7 @@ namespace WebApi.Migrations
                             Id = new Guid("7a47b2ab-1983-4c1f-b498-bf6b57fbb18d"),
                             Address = "456 Elm St, Othertown, USA",
                             BirthDate = new DateTime(1990, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "jane.smith@example.com",
+                            Email = "georgiievsky@gmail.com",
                             FirstName = "Jane",
                             LastName = "Smith",
                             Password = "password2",
