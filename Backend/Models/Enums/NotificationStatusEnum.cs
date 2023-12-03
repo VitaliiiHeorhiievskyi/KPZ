@@ -3,8 +3,7 @@
     public enum NotificationStatusEnum
     {
         Pending,
-        Expired,
-        Deleted,
+        Rejected,
         Active
     }
 }
