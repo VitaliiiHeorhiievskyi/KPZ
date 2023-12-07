@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using WebApi.Interfaces;
 using WebApi.Models;
 using WebApi.Models.Enums;
+using WebApi.Queries;
 using WebApi.Services.EmailService;
 
 namespace WebApi.Controllers
@@ -13,12 +15,14 @@ namespace WebApi.Controllers
         private readonly INotificationService _service;
         private readonly IEmailService _emailService;
         private readonly IPatientService _patientService;
+        private readonly IMediator _mediator;
 
-        public NotificationController(INotificationService service, IEmailService emailService, IPatientService patientService)
+        public NotificationController(INotificationService service, IEmailService emailService, IPatientService patientService, IMediator mediator)
         {
             _service = service;
             _emailService = emailService;
             _patientService = patientService;
+            _mediator = mediator;
         }
 
         [HttpPost]
@@ -56,12 +60,7 @@ namespace WebApi.Controllers
         [HttpGet("bypatient/{patientId}")]
         public async Task<IActionResult> GetByPatientId(Guid patientId)
         {
-            var notifications = await _service.GetByPatientIdAsync(patientId);
-            if (notifications == null)
-            {
-                return NotFound();
-            }
-            return Ok(notifications);
+            return await _mediator.Send(new GetByPatientIdQuery(patientId));
         }
 
         [HttpGet("doctors")]

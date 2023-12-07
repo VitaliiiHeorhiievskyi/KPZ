@@ -1,7 +1,9 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using PatientHealth.DataBase;
+using System.Reflection;
 using WebApi.Interfaces;
 using WebApi.Services;
 using WebApi.Services.EmailService;
@@ -22,6 +24,8 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
+
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
 // add policy
 builder.Services.AddCors(options =>
