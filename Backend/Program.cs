@@ -3,6 +3,8 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using PatientHealth.DataBase;
+using System.Configuration;
+using WebApi.Infrastructure.Extensions;
 using System.Reflection;
 using WebApi.Interfaces;
 using WebApi.Services;
@@ -24,6 +26,7 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
+builder.Services.AddAzureBlobService(builder.Configuration);
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 

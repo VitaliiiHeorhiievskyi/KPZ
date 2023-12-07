@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Interfaces;
 using WebApi.Models;
 using WebApi.Models.Enums;
+using WebApi.ViewModels;
 
 namespace WebApi.Controllers
 {
@@ -18,7 +19,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Document document)
+        public async Task<IActionResult> Create(DocumentViewModel document)
         {
             var createdDocument = await _service.CreateAsync(document);
 
