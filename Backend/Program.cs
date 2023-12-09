@@ -9,6 +9,7 @@ using System.Reflection;
 using WebApi.Interfaces;
 using WebApi.Services;
 using WebApi.Services.EmailService;
+using WebApi.DataBase.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddAzureBlobService(builder.Configuration);
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
