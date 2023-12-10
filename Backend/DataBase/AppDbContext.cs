@@ -6,10 +6,10 @@ namespace PatientHealth.DataBase
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Patient> Patients { get; set; }
-        public DbSet<Notification> Notifications { get; set; }
-        public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<Document> Documents { get; set; }
+        public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<Notification> Notifications { get; set; }
+        public virtual DbSet<Doctor> Doctors { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
