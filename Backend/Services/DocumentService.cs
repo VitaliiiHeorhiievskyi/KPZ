@@ -20,7 +20,7 @@ public class DocumentService : IDocumentService
 
     public async Task<Document> CreateAsync(DocumentViewModel document)
     {
-        var url = await blobService.UploadFileBlobAsync(document.Base64Content, document.FileFormat, CancellationToken.None);
+        var url = await blobService.UploadFileBlobAsync(document.Base64Content, document.Name, CancellationToken.None);
         return await _documentRepository.CreateAsync(document, url);
     }
 

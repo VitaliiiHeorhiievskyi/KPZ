@@ -13,12 +13,17 @@ public class AzureBlobService : IBlobService
         blobServiceClient = new BlobServiceClient(this.options.ConnectionString);
     }
 
-    public async Task<string> UploadFileBlobAsync(string base64, string fileFormat, CancellationToken cancellationToken)
+    public async Task<string> UploadFileBlobAsync(string base64, string name, CancellationToken cancellationToken)
     {
-        var fileName = Guid.NewGuid() + fileFormat;
+        var fileName = Guid.NewGuid() + Path.GetExtension(name);
         var containerClient = blobServiceClient.GetBlobContainerClient(options.ContainerName);
 
         var blobClient = containerClient.GetBlobClient(fileName);
+
+        if(base64.Contains("base64,"))
+        {
+            base64 = base64.Split("base64,")[1];
+        }
 
         var bytes = Convert.FromBase64String(base64);
 
