@@ -6,7 +6,7 @@ using WebApi.Models;
 using WebApi.Models.Enums;
 using WebApi.Services;
 
-namespace WebApi.UnitTest
+namespace WebApi.Services.Tests
 {
     public class NotificationServiceTests
     {
