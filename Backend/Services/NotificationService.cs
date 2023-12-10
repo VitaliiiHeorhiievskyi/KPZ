@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PatientHealth.DataBase;
-using WebApi.Helpers;
 using WebApi.Interfaces;
 using WebApi.Models;
-using WebApi.Models.Enums;
 
 namespace WebApi.Services
 {
@@ -18,19 +16,12 @@ namespace WebApi.Services
 
         public async Task<Notification> CreateAsync(Notification notification)
         {
-            try
-            {
-                notification.Id = Guid.NewGuid();
-                _context.Notifications.Add(notification);
-                notification.DoctorId = notification.Doctor?.Id;
-                notification.Doctor = null;
-                await _context.SaveChangesAsync();
-                return notification;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            notification.Id = Guid.NewGuid();
+            notification.DoctorId = notification.Doctor?.Id;
+            notification.Doctor = null;
+            _context.Notifications.Add(notification);
+            await _context.SaveChangesAsync();
+            return notification;
         }
 
         public async Task<IEnumerable<Notification>> GetAllAsync()
