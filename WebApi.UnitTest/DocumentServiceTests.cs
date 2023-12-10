@@ -5,6 +5,9 @@ using WebApi.DataBase.Repository;
 using WebApi.Models;
 using WebApi.Services.BlobStorage;
 using WebApi.ViewModels;
+
+namespace WebApi.Services.Tests;
+
 public class DocumentRepositoryTests
 {
     [Fact]
