@@ -27,7 +27,7 @@ public class PatientService : IPatientService
             patient.LastName = updatedPatient.LastName;
             patient.Email = updatedPatient.Email;
             patient.Password = updatedPatient.Password;
-            patient.BirthDate = updatedPatient.BirthDate;
+            patient.DateOfBirth = updatedPatient.DateOfBirth;
             patient.Address = updatedPatient.Address;
             patient.PhoneNumber = updatedPatient.PhoneNumber;
             patient.Sex = updatedPatient.Sex;

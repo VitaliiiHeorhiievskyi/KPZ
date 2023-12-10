@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PatientHealth.DataBase;
+using WebApi.Helpers;
 using WebApi.Interfaces;
 using WebApi.Models;
 using WebApi.Models.Enums;
@@ -17,10 +18,19 @@ namespace WebApi.Services
 
         public async Task<Notification> CreateAsync(Notification notification)
         {
-            notification.Id = Guid.NewGuid();
-            _context.Notifications.Add(notification);
-            await _context.SaveChangesAsync();
-            return notification;
+            try
+            {
+                notification.Id = Guid.NewGuid();
+                _context.Notifications.Add(notification);
+                notification.DoctorId = notification.Doctor?.Id;
+                notification.Doctor = null;
+                await _context.SaveChangesAsync();
+                return notification;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<IEnumerable<Notification>> GetAllAsync()
@@ -38,9 +48,30 @@ namespace WebApi.Services
             return await _context.Notifications.FindAsync(id);
         }
 
-        public async Task<List<Notification>?> GetByPatientIdAsync(Guid patientId)
+        public async Task<List<NotificationDto>?> GetByPatientIdAsync(Guid patientId)
         {
-            return await _context.Notifications.Where(n => n.PatientId == patientId).ToListAsync();
+            try
+            {
+                return await _context.Notifications.Include(n => n.Doctor)
+                    .Where(n => n.PatientId == patientId).Select(n => new NotificationDto
+                    {
+                        Date = n.Date,
+                        Description = n.Description,
+                        Doctor = n.Doctor,
+                        DoctorId = n.DoctorId,
+                        Type = n.Type,
+                        Duration = n.Duration,
+                        Id = n.Id,
+                        Label = n.Label,
+                        PatientId = n.PatientId,
+                        Regularity = n.Regularity,
+                        Status = n.Status
+                    }).ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task UpdateAsync(Guid id, Notification notification)
@@ -71,7 +102,7 @@ namespace WebApi.Services
             }
         }
 
-        public async Task ChangeStatusAsync(Guid id, NotificationStatusEnum notificationStatus)
+        public async Task ChangeStatusAsync(Guid id, string notificationStatus)
         {
             var existingNotification = await _context.Notifications.FindAsync(id);
             if (existingNotification != null)

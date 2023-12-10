@@ -2,7 +2,7 @@
 
 namespace WebApi.Models
 {
-    public class Notification
+    public class NotificationDto
     {
         public Guid Id { get; set; }
         public string? Type { get; set; }

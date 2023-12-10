@@ -88,7 +88,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}/{status}")]
-        public async Task<IActionResult> ChangeStatus(Guid id, NotificationStatusEnum status)
+        public async Task<IActionResult> ChangeStatus(Guid id, string status)
         {
             await _service.ChangeStatusAsync(id, status);
 

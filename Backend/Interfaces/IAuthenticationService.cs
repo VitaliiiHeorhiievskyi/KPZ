@@ -5,5 +5,5 @@ namespace WebApi.Interfaces;
 
 public interface IAuthenticationService
 {
-    Task<Patient?> Login(LoginRequest loginRequest);
+    Task<PatientDto?> Login(LoginRequest loginRequest);
 }

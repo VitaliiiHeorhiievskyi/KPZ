@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using PatientHealth.DataBase;
 using WebApi.Interfaces;
+using WebApi.Migrations;
 using WebApi.Models;
 using Xunit;
 
@@ -33,11 +34,16 @@ namespace WebApi.Services.Tests
                 Id = id,
                 FirstName = "John",
                 LastName = "Doe",
-                Address = "asd",
+                Address = new PatientAddress
+                {
+                    Address = "asd",
+                    City = "asd",
+                    Country = "asd"
+                },
                 Email = "asd",
                 Password = "ads",
                 Sex = Sex.Male,
-                BirthDate = DateTime.Now,
+                DateOfBirth = DateTime.Now,
                 PhoneNumber = "asd"
             };
             dbContext.Patients.Add(patient);
@@ -84,8 +90,13 @@ namespace WebApi.Services.Tests
                 LastName = "Doe",
                 Email = "john.doe@example.com",
                 Password = "oldPassword",
-                BirthDate = new DateTime(1990, 1, 1),
-                Address = "123 Main St",
+                DateOfBirth = new DateTime(1990, 1, 1),
+                Address = new PatientAddress
+                {
+                    Address = "123 Main St",
+                    City = "asd",
+                    Country = "asd"
+                },
                 PhoneNumber = "555-1234",
                 Sex = Sex.Male
             };
@@ -100,8 +111,13 @@ namespace WebApi.Services.Tests
                 LastName = "Doe",
                 Email = "jane.doe@example.com",
                 Password = "newPassword",
-                BirthDate = new DateTime(1995, 2, 2),
-                Address = "456 Oak St",
+                DateOfBirth = new DateTime(1995, 2, 2),
+                Address = new PatientAddress
+                {
+                    Address = "123 Main St",
+                    City = "asd",
+                    Country = "asd"
+                },
                 PhoneNumber = "555-5678",
                 Sex = Sex.Female
             };
@@ -116,8 +132,7 @@ namespace WebApi.Services.Tests
             Assert.Equal("Doe", updatedPatientFromDb.LastName);
             Assert.Equal("jane.doe@example.com", updatedPatientFromDb.Email);
             Assert.Equal("newPassword", updatedPatientFromDb.Password);
-            Assert.Equal(new DateTime(1995, 2, 2), updatedPatientFromDb.BirthDate);
-            Assert.Equal("456 Oak St", updatedPatientFromDb.Address);
+            Assert.Equal(new DateTime(1995, 2, 2), updatedPatientFromDb.DateOfBirth);
             Assert.Equal("555-5678", updatedPatientFromDb.PhoneNumber);
             Assert.Equal(Sex.Female, updatedPatientFromDb.Sex);
         }

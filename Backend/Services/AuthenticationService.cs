@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PatientHealth.DataBase;
+using WebApi.Helpers;
 using WebApi.Interfaces;
 using WebApi.Models;
 using WebApi.ViewModels;
@@ -15,8 +16,21 @@ public class AuthenticationService : IAuthenticationService
         _context = context;
     }
 
-    public async Task<Patient?> Login(LoginRequest loginRequest)
+    public async Task<PatientDto?> Login(LoginRequest loginRequest)
     {
-        return await _context.Patients.FirstOrDefaultAsync(p => p.Email == loginRequest.Email && p.Password == loginRequest.Password);
+        return await _context.Patients
+            .Select(p => new PatientDto
+            {
+                DateOfBirth = p.DateOfBirth,
+                FirstName = p.FirstName,
+                Address = p.Address,
+                AddressId = p.AddressId,
+                Email = p.Email,
+                Id = p.Id,
+                LastName = p.LastName,
+                Password = p.Password,
+                Sex = EnumHelper.GetSexString(p.Sex),
+                PhoneNumber = p.PhoneNumber
+            }).FirstOrDefaultAsync(p => p.Email == loginRequest.Email && p.Password == loginRequest.Password);
     }
 }

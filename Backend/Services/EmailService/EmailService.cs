@@ -55,7 +55,7 @@ namespace WebApi.Services.EmailService
 
         public void SendEmailToPatient(Notification notification, Patient patient)
         {
-            var statusColorClass = notification.Status == NotificationStatusEnum.Rejected ? "rejected" : "approved";
+            var statusColorClass = notification.Status == "REJECTED" ? "rejected" : "approved";
 
             var body = $@"
                 <html lang='en'>

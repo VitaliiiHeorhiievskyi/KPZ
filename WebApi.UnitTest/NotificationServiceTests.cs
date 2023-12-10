@@ -166,7 +166,7 @@ namespace WebApi.Services.Tests
         public async Task ChangeStatusAsync_ShouldUpdateNotificationStatus()
         {
             var notificationId = Guid.NewGuid();
-            var notification = new Notification { Id = notificationId, Status = NotificationStatusEnum.Pending /* initial status */ };
+            var notification = new Notification { Id = notificationId, Status = "PENDING" /* initial status */ };
 
             using (var context = new AppDbContext(CreateInMemoryDbContextOptions("ChangeStatusAsync_Test")))
             {
@@ -177,13 +177,13 @@ namespace WebApi.Services.Tests
             using (var context = new AppDbContext(CreateInMemoryDbContextOptions("ChangeStatusAsync_Test")))
             {
                 var service = new NotificationService(context);
-                await service.ChangeStatusAsync(notificationId, NotificationStatusEnum.Active);
+                await service.ChangeStatusAsync(notificationId, "ACTIVE");
             }
 
             using (var context = new AppDbContext(CreateInMemoryDbContextOptions("ChangeStatusAsync_Test")))
             {
                 var updatedNotification = await context.Notifications.FindAsync(notificationId);
-                Assert.Equal(NotificationStatusEnum.Active, updatedNotification.Status);
+                Assert.Equal("ACTIVE", updatedNotification.Status);
             }
         }
 

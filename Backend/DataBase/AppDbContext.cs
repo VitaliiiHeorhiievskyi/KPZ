@@ -10,6 +10,8 @@ namespace PatientHealth.DataBase
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<PatientAddress> PatientAddresses { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
@@ -19,6 +21,23 @@ namespace PatientHealth.DataBase
             // Call the base OnModelCreating method
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<PatientAddress>().HasData(
+                new PatientAddress
+                {
+                    Id = Guid.Parse("f04cd751-3fa2-4e73-86f4-a15ef896c7e6"),
+                    Address = "123 Main St",
+                    City = "Anytown",
+                    Country = "USA"
+                },
+                new PatientAddress
+                {
+                    Id = Guid.Parse("234208f7-43a3-4855-b01c-8dab74fdb46d"),
+                    Address = "456 Elm St",
+                    City = "Othertown",
+                    Country = "USA"
+                }
+            );
+
             modelBuilder.Entity<Patient>().HasData(
                  new Patient
                  {
@@ -27,8 +46,8 @@ namespace PatientHealth.DataBase
                      LastName = "Doe",
                      Email = "john.doe@example.com",
                      Password = "password1",
-                     BirthDate = new DateTime(1980, 1, 1),
-                     Address = "123 Main St, Anytown, USA",
+                     DateOfBirth = new DateTime(1980, 1, 1),
+                     AddressId = Guid.Parse("f04cd751-3fa2-4e73-86f4-a15ef896c7e6"),
                      PhoneNumber = "123-456-7890",
                      Sex = Sex.Male
                  },
@@ -39,8 +58,8 @@ namespace PatientHealth.DataBase
                      LastName = "Smith",
                      Email = "jane.smith@example.com",
                      Password = "password2",
-                     BirthDate = new DateTime(1990, 2, 2),
-                     Address = "456 Elm St, Othertown, USA",
+                     DateOfBirth = new DateTime(1990, 2, 2),
+                     AddressId = Guid.Parse("234208f7-43a3-4855-b01c-8dab74fdb46d"),
                      PhoneNumber = "234-567-8901",
                      Sex = Sex.Female
                  }
@@ -50,11 +69,11 @@ namespace PatientHealth.DataBase
                 new Notification
                 {
                     Id = Guid.NewGuid(),
-                    Type = NotificationTypeEnum.Prescription,
+                    Type = "PRESCRIPTION",
                     Label = "Appointment Reminder",
                     Description = "Don't forget your appointment tomorrow at 10 AM.",
                     Date = DateTime.Now.AddDays(1),
-                    Status = NotificationStatusEnum.Active,
+                    Status = "ACTIVE",
                     DoctorId = Guid.Parse("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                     Duration = 30,
                     Regularity = "Once",
@@ -63,11 +82,11 @@ namespace PatientHealth.DataBase
                 new Notification
                 {
                     Id = Guid.NewGuid(),
-                    Type = NotificationTypeEnum.Appointment,
+                    Type = "APPOINTMENT",
                     Label = "Medication Reminder",
                     Description = "Time to take your medication.",
                     Date = DateTime.Now.AddHours(6),
-                    Status = NotificationStatusEnum.Rejected,
+                    Status = "REJECTED",
                     DoctorId = Guid.Parse("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                     Duration = 0,
                     Regularity = "Daily",
@@ -76,11 +95,11 @@ namespace PatientHealth.DataBase
                 new Notification
                 {
                     Id = Guid.NewGuid(),
-                    Type = NotificationTypeEnum.Prescription,
+                    Type = "PRESCRIPTION",
                     Label = "Lab Results",
                     Description = "Your recent lab results are ready for review.",
                     Date = DateTime.Now.AddDays(2),
-                    Status = NotificationStatusEnum.Active,
+                    Status = "ACTIVE",
                     DoctorId = Guid.Parse("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                     Duration = 0,
                     Regularity = "Once",
@@ -89,11 +108,11 @@ namespace PatientHealth.DataBase
                 new Notification
                 {
                     Id = Guid.NewGuid(),
-                    Type = NotificationTypeEnum.Appointment,
+                    Type = "APPOINTMENT",
                     Label = "Follow-up Reminder",
                     Description = "Remember to schedule your follow-up appointment.",
                     Date = DateTime.Now.AddDays(7),
-                    Status = NotificationStatusEnum.Pending,
+                    Status = "PENDING",
                     DoctorId = Guid.Parse("402d2cc4-1ef7-46e2-a047-1774647ffcf8"),
                     Duration = 0,
                     Regularity = "Once",
@@ -102,11 +121,11 @@ namespace PatientHealth.DataBase
                 new Notification
                 {
                     Id = Guid.NewGuid(),
-                    Type = NotificationTypeEnum.Prescription,
+                    Type = "PRESCRIPTION",
                     Label = "Health Tips",
                     Description = "Check out the latest health tips on our website.",
                     Date = DateTime.Now.AddDays(3),
-                    Status = NotificationStatusEnum.Rejected,
+                    Status = "REJECTED",
                     Doctor = null,
                     Duration = 0,
                     Regularity = "Weekly",
@@ -156,7 +175,7 @@ namespace PatientHealth.DataBase
                     UploadDate = new DateTime(2022, 2, 2),
                     Url = "No Url",
                     IsVerified = true,
-                    PatientId = Guid.Parse("784fe36b-4aaf-4430-bbea-2089f81b753b"),
+                    PatientId = Guid.Parse("b8879171-fab7-4342-8171-82b7900e6f4c"),
                 }
             );
 
