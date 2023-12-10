@@ -33,9 +33,4 @@ public class DocumentService : IDocumentService
     {
         await _documentRepository.DeleteAsync(id);
     }
-
-    public async Task ChangeStatusAsync(Guid id, NotificationStatusEnum notificationStatus)
-    {
-        await _documentRepository.ChangeStatusAsync(id, notificationStatus);
-    }
 }
