@@ -41,8 +41,8 @@ namespace WebApi.Services.EmailService
                        $"<p>Label: {notification.Label}</p>" +
                        $"<p>Description: {notification.Description}</p>" +
                        $"<div style=\"margin-top: 20px;\">" +
-                       $"<a href=\"https://localhost:7219/api/Notification/{notification.Id}/2\" style=\"text-decoration: none; margin-right: 10px; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 5px;\">Approve</a>" +
-                       $"<a href=\"https://localhost:7219/api/Notification/{notification.Id}/1\" style=\"text-decoration: none; padding: 10px 20px; background-color: #f44336; color: white; border-radius: 5px;\">Reject</a>" +
+                       $"<a href=\"https://localhost:7219/api/Notification/{notification.Id}/ACTIVE\" style=\"text-decoration: none; margin-right: 10px; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 5px;\">Approve</a>" +
+                       $"<a href=\"https://localhost:7219/api/Notification/{notification.Id}/REJECTED\" style=\"text-decoration: none; padding: 10px 20px; background-color: #f44336; color: white; border-radius: 5px;\">Reject</a>" +
                        $"</div><p>Thank you.</p>";
 
             SendEmail(new EmailDto()
