@@ -3,3 +3,4 @@
 ################################################################################
 
 /WebApi.UnitTest/obj
+/WebApi.UnitTest/bin/Debug/net6.0/CoverletSourceRootsMapping
