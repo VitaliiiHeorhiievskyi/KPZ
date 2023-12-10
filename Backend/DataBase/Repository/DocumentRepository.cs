@@ -52,16 +52,5 @@ namespace WebApi.DataBase.Repository
                 await _context.SaveChangesAsync();
             }
         }
-
-        public async Task ChangeStatusAsync(Guid id, NotificationStatusEnum notificationStatus)
-        {
-            var existingNotification = await _context.Notifications.FindAsync(id);
-
-            if (existingNotification != null)
-            {
-                existingNotification.Status = notificationStatus;
-                await _context.SaveChangesAsync();
-            }
-        }
     }
 }
