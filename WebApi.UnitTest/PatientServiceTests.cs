@@ -42,7 +42,7 @@ namespace WebApi.Services.Tests
                 },
                 Email = "asd",
                 Password = "ads",
-                Sex = Sex.Male,
+                Sex = "MALE",
                 DateOfBirth = DateTime.Now,
                 PhoneNumber = "asd"
             };
@@ -98,7 +98,7 @@ namespace WebApi.Services.Tests
                     Country = "asd"
                 },
                 PhoneNumber = "555-1234",
-                Sex = Sex.Male
+                Sex = "MALE"
             };
 
             dbContext.Patients.Add(existingPatient);
@@ -119,7 +119,7 @@ namespace WebApi.Services.Tests
                     Country = "asd"
                 },
                 PhoneNumber = "555-5678",
-                Sex = Sex.Female
+                Sex = "FEMALE"
             };
 
             // Act
@@ -134,7 +134,7 @@ namespace WebApi.Services.Tests
             Assert.Equal("newPassword", updatedPatientFromDb.Password);
             Assert.Equal(new DateTime(1995, 2, 2), updatedPatientFromDb.DateOfBirth);
             Assert.Equal("555-5678", updatedPatientFromDb.PhoneNumber);
-            Assert.Equal(Sex.Female, updatedPatientFromDb.Sex);
+            Assert.Equal("FEMALE", updatedPatientFromDb.Sex);
         }
 
         [Fact]

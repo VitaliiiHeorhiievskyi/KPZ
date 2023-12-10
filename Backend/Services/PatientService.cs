@@ -1,4 +1,5 @@
-﻿using PatientHealth.DataBase;
+﻿using Microsoft.EntityFrameworkCore;
+using PatientHealth.DataBase;
 using WebApi.Interfaces;
 using WebApi.Models;
 
@@ -15,7 +16,7 @@ public class PatientService : IPatientService
 
     public async Task<Patient?> GetByIdAsync(Guid id)
     {
-        return await _context.Patients.FindAsync(id);
+        return await _context.Patients.Include(p => p.Address).FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task UpdateAsync(Patient updatedPatient)

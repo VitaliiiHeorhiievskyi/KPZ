@@ -49,7 +49,7 @@ namespace PatientHealth.DataBase
                      DateOfBirth = new DateTime(1980, 1, 1),
                      AddressId = Guid.Parse("f04cd751-3fa2-4e73-86f4-a15ef896c7e6"),
                      PhoneNumber = "123-456-7890",
-                     Sex = Sex.Male
+                     Sex = "MALE"
                  },
                  new Patient
                  {
@@ -61,7 +61,7 @@ namespace PatientHealth.DataBase
                      DateOfBirth = new DateTime(1990, 2, 2),
                      AddressId = Guid.Parse("234208f7-43a3-4855-b01c-8dab74fdb46d"),
                      PhoneNumber = "234-567-8901",
-                     Sex = Sex.Female
+                     Sex = "FEMALE"
                  }
              );
 

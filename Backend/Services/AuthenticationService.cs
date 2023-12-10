@@ -29,7 +29,7 @@ public class AuthenticationService : IAuthenticationService
                 Id = p.Id,
                 LastName = p.LastName,
                 Password = p.Password,
-                Sex = EnumHelper.GetSexString(p.Sex),
+                Sex = p.Sex,
                 PhoneNumber = p.PhoneNumber
             }).FirstOrDefaultAsync(p => p.Email == loginRequest.Email && p.Password == loginRequest.Password);
     }
