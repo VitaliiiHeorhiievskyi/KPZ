@@ -33,7 +33,6 @@ namespace WebApi.Controllers
             var doctors = await _service.GetAllDoctorsAsync();
 
             var doctor = doctors.FirstOrDefault(d => d.Id == notification.DoctorId);
-            doctor = new Doctor() { Email = "georgiievsky@gmail.com", Name = "Mr. Proper" };
 
             _emailService.SendEmailToDoctor(notification, doctor);
 
@@ -93,8 +92,11 @@ namespace WebApi.Controllers
             await _service.ChangeStatusAsync(id, status);
 
             var notification = await _service.GetByIdAsync(id);
+
+            notification.Status = status;
+            await _service.UpdateAsync(id, notification);
+
             var patient = await _patientService.GetByIdAsync(notification.PatientId);
-            patient = new Patient() { Email = "georgiievsky@gmail.com" };
 
             _emailService.SendEmailToPatient(notification, patient);
 
